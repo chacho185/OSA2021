@@ -20,7 +20,7 @@ public class Kupac extends Korisnik {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "kupac")
 	private List<Porudzbina> porudzbine  = new ArrayList<Porudzbina>();
 
-	public Kupac(Long id, String ime, String prezime, String username, String password, Boolean blokiran, String adresa,
+	public Kupac(Integer id, String ime, String prezime, String username, String password, Boolean blokiran, String adresa,
 			List<Porudzbina> porudzbine) {
 		super(id, ime, prezime, username, password, blokiran);
 		this.adresa = adresa;

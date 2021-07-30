@@ -1,0 +1,11 @@
+package com.osa.ProjekatOsa2021.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.osa.ProjekatOsa2021.model.Prodavac;
+
+public interface ProdavacRepository extends JpaRepository<Prodavac, Long> {
+	
+	public Prodavac findOneById(Integer id);
+
+}

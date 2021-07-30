@@ -14,7 +14,7 @@ public abstract class Korisnik implements Serializable{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
-    private Long id;
+    private Integer id;
 	
 	@Column(name = "ime", nullable = false)
 	private String ime;
@@ -30,8 +30,17 @@ public abstract class Korisnik implements Serializable{
 	
 	@Column(name = "blokiran")
 	private Boolean blokiran;
-
-	public Korisnik(Long id, String ime, String prezime, String username, String password, Boolean blokiran) {
+	public Korisnik() {
+		super();
+		this.id = 0;
+		this.ime = "";
+		this.prezime = "";
+		this.username = "";
+		this.password = "";
+		this.blokiran = false;
+	}
+	
+	public Korisnik(Integer id, String ime, String prezime, String username, String password, Boolean blokiran) {
 		super();
 		this.id = id;
 		this.ime = ime;
@@ -43,13 +52,13 @@ public abstract class Korisnik implements Serializable{
 
 	
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
 
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
