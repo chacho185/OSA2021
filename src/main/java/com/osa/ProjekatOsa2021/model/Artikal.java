@@ -43,6 +43,6 @@ public class Artikal {
 	@JoinColumn(name="prodvac_id", referencedColumnName="id", nullable=false)
 	private Prodavac prodavac;
 	
-//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "artikal")
-//	List<AkcijaArtikal> akcijeArtikli = new ArrayList<AkcijaArtikal>();
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "artikal")
+	List<AkcijaArtikal> akcijeArtikli = new ArrayList<AkcijaArtikal>();
 }
