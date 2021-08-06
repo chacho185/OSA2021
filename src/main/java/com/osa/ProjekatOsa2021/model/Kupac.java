@@ -1,6 +1,7 @@
 package com.osa.ProjekatOsa2021.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,6 +27,14 @@ public class Kupac extends Korisnik {
 		this.adresa = adresa;
 		this.porudzbine = porudzbine;
 	}
+	
+	
+	public Kupac() {
+		super();	
+		this.adresa = "";
+	}
+
+
 
 	public String getAdresa() {
 		return adresa;
