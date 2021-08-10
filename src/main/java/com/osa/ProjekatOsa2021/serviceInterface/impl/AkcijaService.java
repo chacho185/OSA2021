@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.osa.ProjekatOsa2021.dto.AkcijaDTO;
+import com.osa.ProjekatOsa2021.dto.ArtikalDTO;
 import com.osa.ProjekatOsa2021.dto.StavkaDTO;
 import com.osa.ProjekatOsa2021.model.Akcija;
 import com.osa.ProjekatOsa2021.model.Prodavac;
@@ -72,6 +73,21 @@ public class AkcijaService implements AkcijaServiceInterface {
 	@Override
 	public void delete(Long id) {
 		akcijaRepository.deleteById(id);
+		
+	}
+	
+	@Override
+    public AkcijaDTO update(Long id, AkcijaDTO akcijaDTO) {
+		Akcija akcija = akcijaRepository.findOneById(id);
+		Prodavac prodavac = akcija.getProdavac();
+		akcija.setProcenat(akcijaDTO.getProcenat());
+		akcija.setOdKad(akcijaDTO.getOdKad());
+		akcija.setDoKad(akcijaDTO.getDoKad());
+		akcija.setTekst(akcijaDTO.getTekst());
+		akcija.setProdavac(prodavac);
+		
+		akcija = akcijaRepository.save(akcija);
+		return new AkcijaDTO(akcija);
 		
 	}
 

@@ -83,5 +83,22 @@ public class StavkaService implements StavkaServiceInterface {
 		stavkaRepository.deleteById(id);
 
 	}
+	
+	@Override
+    public StavkaDTO update(Long id,StavkaDTO stavkaDTO) {
+		
+		Stavka stavka = stavkaRepository.findOneById(id);
+		Porudzbina porudzbina = stavka.getPorudzbina();
+		Artikal artikal = stavka.getArtikal();
+		
+		stavka.setKolicina(stavkaDTO.getKolicina());
+		stavka.setPorudzbina(porudzbina);
+		stavka.setArtikal(artikal);
+		
+		stavka = stavkaRepository.save(stavka);
+		return new StavkaDTO(stavka);
+	}
+	
+	
 
 }

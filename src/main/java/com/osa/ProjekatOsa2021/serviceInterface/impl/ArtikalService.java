@@ -67,5 +67,20 @@ public class ArtikalService implements ArtikalServiceInterface {
 	public void delete(Long id) {
 		artikalRepository.deleteById(id);
 	}
+	
+	@Override
+    public ArtikalDTO update(Long id, ArtikalDTO artikalDTO) {
+        Artikal artikal = artikalRepository.findOneById(id);
+        System.out.println("artikal" + artikal.getNaziv());
+        Prodavac prodavac = artikal.getProdavac();
+        artikal.setNaziv(artikalDTO.getNaziv());
+        artikal.setOpis(artikalDTO.getOpis());
+		artikal.setCena(artikalDTO.getCena());
+		artikal.setPutanjaSlike(artikalDTO.getPutanjaSlike());
+		artikal.setProdavac(prodavac);
+       
+		artikal = artikalRepository.save(artikal);
+		return new ArtikalDTO(artikal);
+    }
 
 }

@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import com.osa.ProjekatOsa2021.dto.ArtikalDTO;
 import com.osa.ProjekatOsa2021.dto.PorudzbinaDTO;
 import com.osa.ProjekatOsa2021.dto.ProdavacDTO;
 import com.osa.ProjekatOsa2021.model.Kupac;
@@ -75,6 +78,25 @@ public class PorudzbinaService implements PorudzbinaServiceInterface {
 		
 		porudzbinaRepository.deleteById(id);
 
+	}
+	
+	@Override
+    public PorudzbinaDTO update(Long id, PorudzbinaDTO porudzbinaDTO) {
+		Porudzbina porudzbina = porudzbinaRepository.findOneById(id);
+		Kupac kupac = porudzbina.getKupac();
+		
+		porudzbina.setSatnica(porudzbinaDTO.getSatnica());
+		porudzbina.setDostavljeno(porudzbinaDTO.getDostavljeno());
+		porudzbina.setOcena(porudzbinaDTO.getOcena());
+		porudzbina.setKomentar(porudzbinaDTO.getKomentar());
+		porudzbina.setAnonimiKomentar(porudzbinaDTO.getAnonimiKomentar());
+		porudzbina.setArhiviraniKomentar(porudzbinaDTO.getArhiviraniKomentar());
+		porudzbina.setKupac(kupac);
+		
+		
+		porudzbina = porudzbinaRepository.save(porudzbina);
+		return new PorudzbinaDTO(porudzbina);
+		
 	}
 
 }

@@ -6,9 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,5 +53,21 @@ public class PorudzbinaController {
 		
 		return ResponseEntity.ok().body(porudzbinaServiceInterface.getById(id));
 	}
+	
+	@DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteArtikal(@PathVariable("id") Long id){
+       porudzbinaServiceInterface.delete(id);
+        return  ResponseEntity.noContent().build();
+    }
+	
+	@PutMapping(value = "/{id}")
+    public ResponseEntity<PorudzbinaDTO> updatePorudzbina(@RequestBody PorudzbinaDTO porudzbinaDTO, @PathVariable("id") Long id){
+        try {
+            porudzbinaServiceInterface.update(id,porudzbinaDTO);
+            return  ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

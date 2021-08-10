@@ -13,5 +13,7 @@ public interface ArtikalServiceInterface {
 	
 	public ArtikalDTO save(ArtikalDTO artikal);
 	
+	public ArtikalDTO update(Long id ,ArtikalDTO artikal);
+	
 	public void delete(Long id);
 }
