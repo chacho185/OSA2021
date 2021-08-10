@@ -1,12 +1,11 @@
 package com.osa.ProjekatOsa2021.dto;
 
+import com.osa.ProjekatOsa2021.model.Admin;
 import com.osa.ProjekatOsa2021.model.Kupac;
-import com.osa.ProjekatOsa2021.model.Prodavac;
 
-public class KupacDTO {
+public class AdminDTO {
 	
 	private Long id;
-	private String adresa;
 	private String ime;
 	private String prezime;
 	private String korisnickoIme;
@@ -14,11 +13,9 @@ public class KupacDTO {
 	private Boolean blokiran;
 	
 	
-	public KupacDTO(Long id, String adresa, String ime, String prezime, String korisnickoIme, String lozinka,
-			Boolean blokiran) {
+	public AdminDTO(Long id, String ime, String prezime, String korisnickoIme, String lozinka, Boolean blokiran) {
 		super();
 		this.id = id;
-		this.adresa = adresa;
 		this.ime = ime;
 		this.prezime = prezime;
 		this.korisnickoIme = korisnickoIme;
@@ -26,8 +23,8 @@ public class KupacDTO {
 		this.blokiran = blokiran;
 	}
 	
-	public KupacDTO(Kupac k) {
-		this(k.getId(), k.getAdresa(), k.getIme(), k.getPrezime(), k.getPassword(), k.getUsername(), k.getBlokiran());
+	public AdminDTO(Admin a) {
+		this(a.getId(), a.getIme(), a.getPrezime(), a.getPassword(), a.getUsername(), a.getBlokiran());
 	}
 
 	public Long getId() {
@@ -36,14 +33,6 @@ public class KupacDTO {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getAdresa() {
-		return adresa;
-	}
-
-	public void setAdresa(String adresa) {
-		this.adresa = adresa;
 	}
 
 	public String getIme() {
@@ -85,7 +74,6 @@ public class KupacDTO {
 	public void setBlokiran(Boolean blokiran) {
 		this.blokiran = blokiran;
 	}
-	
 	
 	
 	

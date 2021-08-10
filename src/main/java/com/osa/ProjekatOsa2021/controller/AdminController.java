@@ -13,41 +13,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.osa.ProjekatOsa2021.dto.AdminDTO;
 import com.osa.ProjekatOsa2021.dto.KupacDTO;
 import com.osa.ProjekatOsa2021.dto.ProdavacDTO;
+import com.osa.ProjekatOsa2021.model.Admin;
 import com.osa.ProjekatOsa2021.model.Kupac;
-import com.osa.ProjekatOsa2021.model.Prodavac;
+import com.osa.ProjekatOsa2021.repository.AdminRepository;
+import com.osa.ProjekatOsa2021.serviceInterface.AdminServiceInterface;
 import com.osa.ProjekatOsa2021.serviceInterface.KupacServiceInterface;
 
 @RestController
-@RequestMapping(value = "api/kupac")
-public class KupacController {
+@RequestMapping(value = "api/admin")
+public class AdminController {
 	
 	@Autowired
-	KupacServiceInterface kupacServiceInterface;
+	AdminServiceInterface adminServiceInterface;
 	
 	@GetMapping
-	public ResponseEntity<List<KupacDTO>> getAllKupac() {
+	public ResponseEntity<List<AdminDTO>> getAllAdmin() {
 		
-		return ResponseEntity.ok().body(kupacServiceInterface.getAll());
-		
+		return ResponseEntity.ok().body(adminServiceInterface.getAll());
 	}
 	
 	@PostMapping
-	public ResponseEntity<KupacDTO> saveAccount(@RequestBody KupacDTO kupacDTO){
+	public ResponseEntity<AdminDTO> saveAccount(@RequestBody AdminDTO adminDTO){
 		
-		return ResponseEntity.ok().body(kupacServiceInterface.save(kupacDTO));
+		return  ResponseEntity.ok().body(adminServiceInterface.save(adminDTO));
 	}
 	
-	@GetMapping(value = "/{id}") 
+	@GetMapping(value = "/{id}")
 	
-	public ResponseEntity<KupacDTO> getOneKupac(@PathVariable("id") Long id) throws Exception {
+	public ResponseEntity<AdminDTO> getOneAdmin(@PathVariable("id") Long id ) throws Exception {
 		
-		return ResponseEntity.ok().body(kupacServiceInterface.getById(id));
+		return ResponseEntity.ok().body(adminServiceInterface.getById(id));
 	}
-
-	
-	
-	
 
 }

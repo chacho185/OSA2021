@@ -6,7 +6,7 @@ import com.osa.ProjekatOsa2021.model.Prodavac;
 
 public class ProdavacDTO {
 
-	private Integer id;
+	private Long id;
 	private Date poslujeOd;
 	private String email;
 	private String adresa;
@@ -17,7 +17,7 @@ public class ProdavacDTO {
 	private String lozinka;
 	private Boolean blokiran;
 	
-	public ProdavacDTO(Integer id, Date poslujeOd, String email, String adresa, String naziv, String ime,
+	public ProdavacDTO(Long id, Date poslujeOd, String email, String adresa, String naziv, String ime,
 			String prezime, String korisnickoIme, String lozinka, Boolean blokiran) {
 		super();
 		this.id = id;
@@ -38,11 +38,11 @@ public class ProdavacDTO {
 	}
 
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

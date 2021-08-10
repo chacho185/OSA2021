@@ -9,9 +9,9 @@ public class ArtikalDTO {
 	private String opis;
 	private Double cena;
 	private String putanjaSlike;
-	private ProdavacDTO prodavacDTO;
+	private Long prodavacDTO;
 	
-	public ArtikalDTO(Long id, String naziv, String opis, Double cena, String putanjaSlike, ProdavacDTO prodavacDTO) {
+	public ArtikalDTO(Long id, String naziv, String opis, Double cena, String putanjaSlike, Long prodavacDTO) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
@@ -22,7 +22,7 @@ public class ArtikalDTO {
 	}
 	
 	public ArtikalDTO(Artikal a) {
-		this(a.getId(), a.getNaziv(), a.getOpis(), a.getCena(), a.getPutanjaSlike(), new ProdavacDTO(a.getProdavac()));
+		this(a.getId(), a.getNaziv(), a.getOpis(), a.getCena(), a.getPutanjaSlike(), a.getProdavac().getId());
 	}
 
 	public Long getId() {
@@ -65,11 +65,11 @@ public class ArtikalDTO {
 		this.putanjaSlike = putanjaSlike;
 	}
 
-	public ProdavacDTO getProdavacDTO() {
+	public Long getProdavacDTO() {
 		return prodavacDTO;
 	}
 
-	public void setProdavacDTO(ProdavacDTO prodavacDTO) {
+	public void setProdavacDTO(Long prodavacDTO) {
 		this.prodavacDTO = prodavacDTO;
 	}
 }

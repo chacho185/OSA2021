@@ -2,16 +2,17 @@ package com.osa.ProjekatOsa2021.serviceInterface;
 
 import java.util.List;
 
+import com.osa.ProjekatOsa2021.dto.AkcijaDTO;
 import com.osa.ProjekatOsa2021.model.Akcija;
 
 
 public interface AkcijaServiceInterface {
 	
-	public List<Akcija> getAll();
+	public List<AkcijaDTO> getAll();
 	
-	public Akcija getById(Long id);
+	public AkcijaDTO getById(Long id) throws Exception;
 	
-	public Akcija save(Akcija akcija);
+	public AkcijaDTO save(AkcijaDTO akcija);
 	
 	public void delete(Long id);
 

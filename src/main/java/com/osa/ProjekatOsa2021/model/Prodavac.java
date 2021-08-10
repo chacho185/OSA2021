@@ -40,7 +40,7 @@ public class Prodavac extends Korisnik {
 		this.adresa = "";
 		this.naziv = "";
 	}
-	public Prodavac(Integer id, String ime, String prezime, String username, String password, Boolean blokiran,
+	public Prodavac(Long id, String ime, String prezime, String username, String password, Boolean blokiran,
 			Date poslujeOd, String email, String adresa, String naziv, List<Akcija> akcije, List<Artikal> artikli) {
 		super(id, ime, prezime, username, password, blokiran);
 		this.poslujeOd = poslujeOd;

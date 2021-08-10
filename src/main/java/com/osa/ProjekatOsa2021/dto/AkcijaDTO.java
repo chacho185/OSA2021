@@ -12,10 +12,10 @@ public class AkcijaDTO {
 	private Date odKad;
 	private Date doKad;
 	private String tekst;
-	private ProdavacDTO prodavacDTO;
+	private Long prodavacDTO;
 	
 	
-	public AkcijaDTO(Long id, Integer procenat, Date odKad, Date doKad, String tekst, ProdavacDTO prodavacDTO) {
+	public AkcijaDTO(Long id, Integer procenat, Date odKad, Date doKad, String tekst, Long prodavacDTO) {
 		super();
 		this.id = id;
 		this.procenat = procenat;
@@ -27,7 +27,7 @@ public class AkcijaDTO {
 	
 	
 	public AkcijaDTO(Akcija a) {
-		this(a.getId(), a.getProcenat(), a.getOdKad(), a.getDoKad(), a.getTekst(), new ProdavacDTO(a.getProdavac()));
+		this(a.getId(), a.getProcenat(), a.getOdKad(), a.getDoKad(), a.getTekst(), a.getProdavac().getId());
 	}
 
 
@@ -81,12 +81,12 @@ public class AkcijaDTO {
 	}
 
 
-	public ProdavacDTO getProdavacDTO() {
+	public Long getProdavacDTO() {
 		return prodavacDTO;
 	}
 
 
-	public void setProdavacDTO(ProdavacDTO prodavacDTO) {
+	public void setProdavacDTO(Long prodavacDTO) {
 		this.prodavacDTO = prodavacDTO;
 	}
 	

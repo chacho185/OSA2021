@@ -35,6 +35,14 @@ public class Stavka {
 	@ManyToOne
 	@JoinColumn(name="artikal_id", referencedColumnName="id", nullable=false)
 	private Artikal artikal;
+	
+	public Stavka() {
+		super();
+		this.id = 0L;
+		this.kolicina = 0;
+		this.porudzbina = new Porudzbina();
+		this.artikal = new Artikal();
+	}
 
 	public Stavka(Long id, Integer kolicina, Porudzbina porudzbina, Artikal artikal) {
 		super();

@@ -2,15 +2,16 @@ package com.osa.ProjekatOsa2021.serviceInterface;
 
 import java.util.List;
 
+import com.osa.ProjekatOsa2021.dto.ProdavacDTO;
 import com.osa.ProjekatOsa2021.model.Prodavac;
 
 public interface ProdavacServiceInterface {
 	
-	List<Prodavac> getAll();
+	List<ProdavacDTO> getAll();
 	
-	Prodavac getById(Integer id);
+	ProdavacDTO getById(Long id) throws Exception;
 	
-	Prodavac save(Prodavac p);
+	ProdavacDTO save(ProdavacDTO p);
 	
 	void delete(Long id);
 

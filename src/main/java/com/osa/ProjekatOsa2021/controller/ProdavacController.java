@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,37 +29,23 @@ public class ProdavacController {
 	@GetMapping
 	public ResponseEntity<List<ProdavacDTO>> getAllProdavac() {
 		
-	List<Prodavac> prodavci = prodavacServiceInterface.getAll();
-	
-	List<ProdavacDTO> prodavciDTOs = new ArrayList<ProdavacDTO>();
-	
-	for (Prodavac prodavac : prodavci) {
-		prodavciDTOs.add(new ProdavacDTO(prodavac));
-		
-	}
-	
-	return new ResponseEntity<List<ProdavacDTO>>(prodavciDTOs , HttpStatus.OK);
-	
-	
+		return ResponseEntity.ok().body(prodavacServiceInterface.getAll());
 		
 	}
 	
 	@PostMapping
 	public ResponseEntity<ProdavacDTO> saveAccount(@RequestBody ProdavacDTO prodavacDTO){
 		
-		Prodavac prodavac = new Prodavac();
-		prodavac.setPoslujeOd(prodavacDTO.getPoslujeOd());
-		prodavac.setEmail(prodavacDTO.getEmail());
-		prodavac.setAdresa(prodavacDTO.getAdresa());
-		prodavac.setNaziv(prodavacDTO.getNaziv());
-		prodavac.setIme(prodavacDTO.getIme());
-		prodavac.setPrezime(prodavacDTO.getPrezime());
-		prodavac.setUsername(prodavacDTO.getKorisnickoIme());
-		prodavac.setPassword(prodavacDTO.getLozinka());
-		prodavac.setBlokiran(prodavac.getBlokiran());
-		prodavac = prodavacServiceInterface.save(prodavac);
 		
-		return new ResponseEntity<ProdavacDTO>(new ProdavacDTO(prodavac), HttpStatus.CREATED);
+		return  ResponseEntity.ok().body(prodavacServiceInterface.save(prodavacDTO));
+				
+	}
+	
+	@GetMapping(value = "/{id}")
+	
+	public ResponseEntity<ProdavacDTO> getOneProdavac(@PathVariable("id") Long id ) throws Exception {
+		
+		return ResponseEntity.ok().body(prodavacServiceInterface.getById(id));
 	}
 
 	

@@ -7,6 +7,6 @@ import com.osa.ProjekatOsa2021.model.Kupac;
 
 public interface KupacRepository extends JpaRepository<Kupac, Long> {
 	
-	public Kupac findOneById(Integer id);
+	public Kupac findOneById(Long id);
 
 }

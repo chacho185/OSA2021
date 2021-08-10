@@ -7,9 +7,15 @@ import javax.persistence.Table;
 @Table(name = "administratori")
 public class Admin extends Korisnik {
 
-	public Admin(Integer id, String ime, String prezime, String username, String password, Boolean blokiran) {
+	public Admin(Long id, String ime, String prezime, String username, String password, Boolean blokiran) {
 		super(id, ime, prezime, username, password, blokiran);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	public Admin() {
+		super();
+	}
+	
 
 }

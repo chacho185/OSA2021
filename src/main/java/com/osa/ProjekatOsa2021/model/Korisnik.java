@@ -14,7 +14,7 @@ public abstract class Korisnik implements Serializable{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
-    private Integer id;
+    private Long id;
 	
 	@Column(name = "ime", nullable = false)
 	private String ime;
@@ -32,7 +32,7 @@ public abstract class Korisnik implements Serializable{
 	private Boolean blokiran;
 	public Korisnik() {
 		super();
-		this.id = 0;
+		this.id = 0L;
 		this.ime = "";
 		this.prezime = "";
 		this.username = "";
@@ -40,7 +40,7 @@ public abstract class Korisnik implements Serializable{
 		this.blokiran = false;
 	}
 	
-	public Korisnik(Integer id, String ime, String prezime, String username, String password, Boolean blokiran) {
+	public Korisnik(Long id, String ime, String prezime, String username, String password, Boolean blokiran) {
 		super();
 		this.id = id;
 		this.ime = ime;
@@ -52,13 +52,13 @@ public abstract class Korisnik implements Serializable{
 
 	
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

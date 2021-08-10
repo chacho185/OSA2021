@@ -1,10 +1,16 @@
 package com.osa.ProjekatOsa2021.serviceInterface.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.osa.ProjekatOsa2021.dto.ArtikalDTO;
+import com.osa.ProjekatOsa2021.dto.ProdavacDTO;
+import com.osa.ProjekatOsa2021.model.Artikal;
 import com.osa.ProjekatOsa2021.model.Prodavac;
 import com.osa.ProjekatOsa2021.repository.ProdavacRepository;
 import com.osa.ProjekatOsa2021.serviceInterface.ProdavacServiceInterface;
@@ -15,21 +21,50 @@ public class ProdavacService implements ProdavacServiceInterface {
 	ProdavacRepository prodavacRepository;
 	
 	@Override
-	public List<Prodavac> getAll() {
+	public List<ProdavacDTO> getAll() {
 		
-		return prodavacRepository.findAll();
+		List<Prodavac> prodavci = prodavacRepository.findAll();
+		
+		List<ProdavacDTO> prodavciDTOs = new ArrayList<ProdavacDTO>();
+		
+		for (Prodavac prodavac : prodavci) {
+			prodavciDTOs.add(new ProdavacDTO(prodavac));
+			
+		}
+		
+		return prodavciDTOs;
+		
+		
 	}
 
 	@Override
-	public Prodavac getById(Integer id) {
+	public ProdavacDTO getById(Long id) throws Exception {
 		
-		return prodavacRepository.findOneById(id);
+		Prodavac prodavac = prodavacRepository.findOneById(id);
+		
+		if(prodavac == null) {
+			throw new Exception("Ne postoji prodavac!");
+		}
+		return new ProdavacDTO(prodavac);
 	}
 
 	@Override
-	public Prodavac save(Prodavac p) {
+	public ProdavacDTO save(ProdavacDTO prodavacDTO) {
 		
-		return prodavacRepository.save(p);
+		Prodavac prodavac = new Prodavac();
+		prodavac.setPoslujeOd(prodavacDTO.getPoslujeOd());
+		prodavac.setEmail(prodavacDTO.getEmail());
+		prodavac.setAdresa(prodavacDTO.getAdresa());
+		prodavac.setNaziv(prodavacDTO.getNaziv());
+		prodavac.setIme(prodavacDTO.getIme());
+		prodavac.setPrezime(prodavacDTO.getPrezime());
+		prodavac.setUsername(prodavacDTO.getKorisnickoIme());
+		prodavac.setPassword(prodavacDTO.getLozinka());
+		prodavac.setBlokiran(prodavac.getBlokiran());
+		prodavac = prodavacRepository.save(prodavac);
+		
+		return new ProdavacDTO(prodavac);
+		
 	}
 
 	@Override

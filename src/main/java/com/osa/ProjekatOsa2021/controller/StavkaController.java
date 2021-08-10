@@ -15,45 +15,48 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.osa.ProjekatOsa2021.dto.AkcijaDTO;
 import com.osa.ProjekatOsa2021.dto.ArtikalDTO;
+import com.osa.ProjekatOsa2021.dto.ProdavacDTO;
 import com.osa.ProjekatOsa2021.dto.StavkaDTO;
 import com.osa.ProjekatOsa2021.model.Akcija;
 import com.osa.ProjekatOsa2021.model.Artikal;
+import com.osa.ProjekatOsa2021.model.Porudzbina;
 import com.osa.ProjekatOsa2021.model.Prodavac;
-import com.osa.ProjekatOsa2021.serviceInterface.AkcijaServiceInterface;
+import com.osa.ProjekatOsa2021.model.Stavka;
 import com.osa.ProjekatOsa2021.serviceInterface.ArtikalServiceInterface;
-import com.osa.ProjekatOsa2021.serviceInterface.ProdavacServiceInterface;
+import com.osa.ProjekatOsa2021.serviceInterface.PorudzbinaServiceInterface;
+import com.osa.ProjekatOsa2021.serviceInterface.StavkaServiceInterface;
 
 @RestController
-@RequestMapping(value = "api/akcija")
-public class AkcijaController {
+@RequestMapping(value = "api/stavka")
+public class StavkaController {
 	
 	@Autowired
-	AkcijaServiceInterface akcijaServiceInterface;
+	StavkaServiceInterface stavkaServiceInterface;
 	
 	@Autowired
-	ProdavacServiceInterface prodavacServiceInterface;
+	PorudzbinaServiceInterface porudzbinaServiceInterface;
+	
+	@Autowired
+	ArtikalServiceInterface artikalServiceInterface;
 	
 	
 	@GetMapping
-	public ResponseEntity<List<AkcijaDTO>> getAllAkcija(){
+	public ResponseEntity<List<StavkaDTO>> getAllStavka(){
 		
-		return ResponseEntity.ok().body(akcijaServiceInterface.getAll());
-		
+		return ResponseEntity.ok().body(stavkaServiceInterface.getAll());
 	}
 	
 	@PostMapping
-	public ResponseEntity<AkcijaDTO> saveAccount(@RequestBody AkcijaDTO akcijaDTO){
+	public ResponseEntity<StavkaDTO> saveAccount(@RequestBody StavkaDTO stavkaDTO) throws Exception{
 		
-			
-		return  ResponseEntity.ok().body(akcijaServiceInterface.save(akcijaDTO));
+		return ResponseEntity.ok().body(stavkaServiceInterface.save(stavkaDTO));
 	}
 	
 	@GetMapping(value = "/{id}")
 	
-	public ResponseEntity<AkcijaDTO> getOneAkcija(@PathVariable("id") Long id ) throws Exception {
+	public ResponseEntity<StavkaDTO> getOneStavka(@PathVariable("id") Long id ) throws Exception {
 		
-		return ResponseEntity.ok().body(akcijaServiceInterface.getById(id));
-	
+		return ResponseEntity.ok().body(stavkaServiceInterface.getById(id));
+	}
 
-}
 }

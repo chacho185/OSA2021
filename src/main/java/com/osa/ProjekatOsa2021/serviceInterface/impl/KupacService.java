@@ -1,11 +1,16 @@
 package com.osa.ProjekatOsa2021.serviceInterface.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.osa.ProjekatOsa2021.dto.KupacDTO;
 import com.osa.ProjekatOsa2021.model.Kupac;
+import com.osa.ProjekatOsa2021.model.Prodavac;
 import com.osa.ProjekatOsa2021.repository.KupacRepository;
 import com.osa.ProjekatOsa2021.serviceInterface.KupacServiceInterface;
 @Service
@@ -15,21 +20,47 @@ public class KupacService implements KupacServiceInterface {
 	KupacRepository kupacRepository;
 	
 	@Override
-	public List<Kupac> getAll() {
+	public List<KupacDTO> getAll() {
 		
-		return kupacRepository.findAll();
+		List<Kupac> kupci = kupacRepository.findAll();
+		
+		List<KupacDTO> kupciDTOs = new ArrayList<KupacDTO>();
+		
+		for (Kupac kupac : kupci) {
+			kupciDTOs.add(new KupacDTO(kupac));
+			
+		}
+		
+		return kupciDTOs;
+		
+		
 	}
 
 	@Override
-	public Kupac getById(Integer id) {
+	public KupacDTO getById(Long id) throws Exception{
 		
-		return kupacRepository.findOneById(id);
+		Kupac kupac = kupacRepository.findOneById(id);
+		
+		if(kupac == null) {
+			throw new Exception("Ne postoji kupac!");
+		}
+		
+		return new KupacDTO(kupac);
 	}
 
 	@Override
-	public Kupac save(Kupac k) {
+	public KupacDTO save(KupacDTO kupacDTO) {
 		// TODO Auto-generated method stub
-		return kupacRepository.save(k);
+		Kupac kupac = new Kupac();
+		kupac.setAdresa(kupacDTO.getAdresa());
+		kupac.setIme(kupacDTO.getIme());
+		kupac.setPrezime(kupacDTO.getPrezime());
+		kupac.setUsername(kupacDTO.getKorisnickoIme());
+		kupac.setPassword(kupacDTO.getLozinka());
+		kupac.setBlokiran(kupac.getBlokiran());
+		kupac = kupacRepository.save(kupac);
+		
+		return new KupacDTO(kupac);
 	}
 
 	@Override

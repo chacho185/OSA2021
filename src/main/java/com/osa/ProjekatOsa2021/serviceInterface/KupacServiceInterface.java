@@ -2,15 +2,16 @@ package com.osa.ProjekatOsa2021.serviceInterface;
 
 import java.util.List;
 
+import com.osa.ProjekatOsa2021.dto.KupacDTO;
 import com.osa.ProjekatOsa2021.model.Kupac;
 
 public interface KupacServiceInterface {
 	
-	    public List<Kupac> getAll();
+	    public List<KupacDTO> getAll();
 		
-		public Kupac getById(Integer id);
+		public KupacDTO getById(Long id) throws Exception;
 		
-		public Kupac save(Kupac k);
+		public KupacDTO save(KupacDTO k);
 		
 		public void delete(Long id);
 

@@ -49,6 +49,18 @@ public class Porudzbina {
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "porudzbina")
 	private List<Stavka> stavke = new ArrayList<Stavka>();
+	
+	
+	public Porudzbina() {
+		super();
+		this.id = 0L;
+		this.satnica = new Date();
+		this.dostavljeno = false;
+		this.ocena = 0;
+		this.komentar = "";
+		this.anonimiKomentar = false;
+		this.arhiviraniKomentar = false;
+	}
 
 	public Porudzbina(Long id, Date satnica, Boolean dostavljeno, Integer ocena, String komentar,
 			Boolean anonimiKomentar, Boolean arhiviraniKomentar, Kupac kupac, List<Stavka> stavke) {
