@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.osa.ProjekatOsa2021.dto.AdminDTO;
 import com.osa.ProjekatOsa2021.dto.KupacDTO;
+import com.osa.ProjekatOsa2021.model.Admin;
 import com.osa.ProjekatOsa2021.model.Kupac;
 import com.osa.ProjekatOsa2021.model.Prodavac;
 import com.osa.ProjekatOsa2021.repository.KupacRepository;
@@ -70,5 +72,22 @@ public class KupacService implements KupacServiceInterface {
 		
 
 	}
+	
+	@Override
+    public KupacDTO update(Long id, KupacDTO kupacDTO) {
+		Kupac kupac = kupacRepository.findOneById(id);
+		kupac.setAdresa(kupacDTO.getAdresa());
+		kupac.setIme(kupacDTO.getIme());
+		kupac.setPrezime(kupacDTO.getPrezime());
+		kupac.setUsername(kupacDTO.getKorisnickoIme());
+		kupac.setPassword(kupacDTO.getLozinka());
+		kupac.setBlokiran(kupacDTO.getBlokiran());
+		
+		kupac = kupacRepository.save(kupac);
+		return new KupacDTO(kupac);
+		
+	}
+	
+	
 
 }

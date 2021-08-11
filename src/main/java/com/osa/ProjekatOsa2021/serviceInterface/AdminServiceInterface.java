@@ -3,6 +3,7 @@ package com.osa.ProjekatOsa2021.serviceInterface;
 import java.util.List;
 
 import com.osa.ProjekatOsa2021.dto.AdminDTO;
+import com.osa.ProjekatOsa2021.dto.AkcijaDTO;
 import com.osa.ProjekatOsa2021.model.Admin;
 
 public interface AdminServiceInterface {
@@ -13,6 +14,8 @@ public interface AdminServiceInterface {
 	
 	public AdminDTO save(AdminDTO a);
 	
-	public void delete(Long id);
+	public AdminDTO update(Long id ,AdminDTO admin);
 
+	
+	public void delete(Long id);
 }

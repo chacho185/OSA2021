@@ -9,8 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.osa.ProjekatOsa2021.dto.ArtikalDTO;
+import com.osa.ProjekatOsa2021.dto.KupacDTO;
 import com.osa.ProjekatOsa2021.dto.ProdavacDTO;
 import com.osa.ProjekatOsa2021.model.Artikal;
+import com.osa.ProjekatOsa2021.model.Kupac;
 import com.osa.ProjekatOsa2021.model.Prodavac;
 import com.osa.ProjekatOsa2021.repository.ProdavacRepository;
 import com.osa.ProjekatOsa2021.serviceInterface.ProdavacServiceInterface;
@@ -72,6 +74,21 @@ public class ProdavacService implements ProdavacServiceInterface {
 		
 		prodavacRepository.deleteById(id);
 
+	}
+	
+	@Override
+    public ProdavacDTO update(Long id, ProdavacDTO prodavacDTO) {
+		Prodavac prodavac = prodavacRepository.findOneById(id);
+		prodavac.setAdresa(prodavacDTO.getAdresa());
+		prodavac.setIme(prodavacDTO.getIme());
+		prodavac.setPrezime(prodavacDTO.getPrezime());
+		prodavac.setUsername(prodavacDTO.getKorisnickoIme());
+		prodavac.setPassword(prodavacDTO.getLozinka());
+		prodavac.setBlokiran(prodavacDTO.getBlokiran());
+		
+		prodavac = prodavacRepository.save(prodavac);
+		return new ProdavacDTO(prodavac);
+		
 	}
 
 }

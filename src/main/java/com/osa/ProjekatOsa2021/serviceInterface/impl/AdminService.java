@@ -9,7 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.osa.ProjekatOsa2021.dto.AdminDTO;
+import com.osa.ProjekatOsa2021.dto.AkcijaDTO;
 import com.osa.ProjekatOsa2021.model.Admin;
+import com.osa.ProjekatOsa2021.model.Akcija;
 import com.osa.ProjekatOsa2021.model.Prodavac;
 import com.osa.ProjekatOsa2021.repository.AdminRepository;
 import com.osa.ProjekatOsa2021.serviceInterface.AdminServiceInterface;
@@ -66,5 +68,18 @@ public class AdminService implements AdminServiceInterface {
 		
 		 adminRepository.deleteById(id);
 	}
-
+	
+	@Override
+    public AdminDTO update(Long id, AdminDTO adminDTO) {
+		Admin admin = adminRepository.findOneById(id);
+		admin.setIme(adminDTO.getIme());
+		admin.setPrezime(adminDTO.getPrezime());
+		admin.setUsername(adminDTO.getKorisnickoIme());
+		admin.setPassword(adminDTO.getLozinka());
+		admin.setBlokiran(adminDTO.getBlokiran());
+		
+		admin = adminRepository.save(admin);
+		return new AdminDTO(admin);
+		
+	}
 }
