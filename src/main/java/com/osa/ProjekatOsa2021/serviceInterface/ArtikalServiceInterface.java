@@ -15,5 +15,7 @@ public interface ArtikalServiceInterface {
 	
 	public ArtikalDTO update(Long id ,ArtikalDTO artikal);
 	
+	public List<ArtikalDTO> findByProdavac(Long id);
+	
 	public void delete(Long id);
 }

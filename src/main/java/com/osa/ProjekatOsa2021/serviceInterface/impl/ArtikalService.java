@@ -83,4 +83,17 @@ public class ArtikalService implements ArtikalServiceInterface {
 		return new ArtikalDTO(artikal);
     }
 
+	@Override
+	public List<ArtikalDTO> findByProdavac(Long id) {
+		
+		List<Artikal> artikli = artikalRepository.findByProdavac_id(id);
+		
+		List<ArtikalDTO> artikliDTOs = new ArrayList<ArtikalDTO>();
+		
+		for (Artikal artikal : artikli) {
+			artikliDTOs.add(new ArtikalDTO(artikal));
+		}
+		return artikliDTOs;
+	}
+
 }

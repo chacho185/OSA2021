@@ -65,4 +65,10 @@ public class ArtikalController {
             return ResponseEntity.notFound().build();
         }
     }
+	
+	@GetMapping(value = "/prodavac/{id}")
+    public ResponseEntity<List<ArtikalDTO>> getArtikalByProdavac(@PathVariable("id") Long id) {
+
+        return ResponseEntity.ok().body(artikalServiceInterface.findByProdavac(id));
+    }
 }
