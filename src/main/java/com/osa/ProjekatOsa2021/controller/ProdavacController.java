@@ -37,7 +37,7 @@ public class ProdavacController {
 		
 	}
 	
-	@PostMapping
+	@PostMapping(value = "/register")
 	public ResponseEntity<ProdavacDTO> saveAccount(@RequestBody ProdavacDTO prodavacDTO){
 		
 		

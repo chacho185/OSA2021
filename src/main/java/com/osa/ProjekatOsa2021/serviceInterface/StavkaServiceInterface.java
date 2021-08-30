@@ -18,6 +18,8 @@ public interface StavkaServiceInterface {
 	
 	public StavkaDTO update(Long id ,StavkaDTO stavka);
 	
+	public List<StavkaDTO> findByArtikalAndPorudzbina(Long artikalId,Long porudzbinaId);
+	
 	public void delete(Long id);
 
 }

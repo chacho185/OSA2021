@@ -19,6 +19,11 @@ public class StavkaDTO {
 		this.artikalDTO = artikalDTO;
 	}
 	
+	public StavkaDTO() {
+		super();
+		
+	}
+	
 	public StavkaDTO(Stavka s) {
 		this(s.getId(), s.getKolicina(), s.getPorudzbina().getId(),s.getArtikal().getId());
 	}

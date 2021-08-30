@@ -36,7 +36,7 @@ public class KupacController {
 		
 	}
 	
-	@PostMapping
+	@PostMapping(value = "/register")
 	public ResponseEntity<KupacDTO> saveAccount(@RequestBody KupacDTO kupacDTO){
 		
 		return ResponseEntity.ok().body(kupacServiceInterface.save(kupacDTO));

@@ -76,5 +76,14 @@ public class StavkaController {
             return ResponseEntity.notFound().build();
         }
     }
+	
+	@GetMapping(value = "/artikal/{artikalid}/porudzbina/{porudzbinaid}")
+	
+	public ResponseEntity<List<StavkaDTO>> getArtikalAndPorudzbina(@PathVariable("artikalid") Long artikalid, @PathVariable("porudzbinaid") Long porudzbinaid ) throws Exception {
+		
+		return ResponseEntity.ok().body(stavkaServiceInterface.findByArtikalAndPorudzbina(artikalid, porudzbinaid));
+	}
+	
+	
 
 }

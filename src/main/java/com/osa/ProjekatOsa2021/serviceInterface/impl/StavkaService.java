@@ -98,6 +98,26 @@ public class StavkaService implements StavkaServiceInterface {
 		stavka = stavkaRepository.save(stavka);
 		return new StavkaDTO(stavka);
 	}
+
+	@Override
+	public List<StavkaDTO> findByArtikalAndPorudzbina(Long artikalId, Long porudzbinaId) {
+		
+		List<Stavka> stavka = stavkaRepository.findByArtikal_idAndPorudzbina_id(artikalId, porudzbinaId);
+		
+//		Stavka stavkaA = new Stavka();
+//		stavkaA.setArtikal(artikalRepository.getOne(artikalId));
+//		stavkaA.setPorudzbina(porudzbinaRepository.getOne(porudzbinaId));
+//		stavkaA.setKolicina(stavkaDTO.getKolicina());
+//		stavkaA = stavkaRepository.save(stavkaA);
+		List<StavkaDTO> stavkaDTOs = new ArrayList<StavkaDTO>();
+		
+		for (Stavka stavkaa : stavka) {
+			stavkaDTOs.add(new StavkaDTO(stavkaa));
+		}
+		return stavkaDTOs;
+	}
+	
+	
 	
 	
 
