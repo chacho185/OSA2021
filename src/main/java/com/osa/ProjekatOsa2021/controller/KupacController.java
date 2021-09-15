@@ -64,9 +64,4 @@ public class KupacController {
             return ResponseEntity.notFound().build();
         }
     }
-
-	
-	
-	
-
 }

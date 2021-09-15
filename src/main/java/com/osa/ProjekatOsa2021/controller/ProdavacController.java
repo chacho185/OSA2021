@@ -67,12 +67,4 @@ public class ProdavacController {
             return ResponseEntity.notFound().build();
         }
     }
-	
-	
-	
-	
-	
-
-	
-
 }
