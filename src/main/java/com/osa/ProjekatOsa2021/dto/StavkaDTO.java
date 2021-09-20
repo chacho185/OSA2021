@@ -10,7 +10,6 @@ public class StavkaDTO {
 	private Long porudzbinaDTO;
 	private Long artikalDTO;
 	
-	
 	public StavkaDTO(Long id, Integer kolicina, Long porudzbinaDTO, Long artikalDTO) {
 		super();
 		this.id = id;

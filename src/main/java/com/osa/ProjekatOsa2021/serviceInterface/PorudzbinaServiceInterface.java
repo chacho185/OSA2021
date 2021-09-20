@@ -12,7 +12,7 @@ public interface PorudzbinaServiceInterface {
 	
 	public PorudzbinaDTO getById(Long id) throws Exception;
 	
-	public PorudzbinaDTO save(PorudzbinaDTO porudzbina);
+	public PorudzbinaDTO save(PorudzbinaDTO porudzbina, String name);
 	
 	public PorudzbinaDTO update(Long id ,PorudzbinaDTO artikal);
 	

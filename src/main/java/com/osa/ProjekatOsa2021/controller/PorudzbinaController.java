@@ -1,5 +1,6 @@
 package com.osa.ProjekatOsa2021.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,10 +42,10 @@ public class PorudzbinaController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<PorudzbinaDTO> saveAccount(@RequestBody PorudzbinaDTO porudzbinaDTO){
+	public ResponseEntity<PorudzbinaDTO> saveAccount(@RequestBody PorudzbinaDTO porudzbinaDTO, Principal principal){
 	
-
-		return  ResponseEntity.ok().body(porudzbinaServiceInterface.save(porudzbinaDTO));
+//		System.out.println(principal.getName() + " aaaaaaaaaaa---------------------");
+		return  ResponseEntity.ok().body(porudzbinaServiceInterface.save(porudzbinaDTO, "aaaa"));
 	}
 	
 	@GetMapping(value = "/{id}")
@@ -69,5 +70,4 @@ public class PorudzbinaController {
             return ResponseEntity.notFound().build();
         }
     }
-
 }

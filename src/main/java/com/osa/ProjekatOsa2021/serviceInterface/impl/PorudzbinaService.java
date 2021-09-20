@@ -54,10 +54,10 @@ public class PorudzbinaService implements PorudzbinaServiceInterface {
 	}
 
 	@Override
-	public PorudzbinaDTO save(PorudzbinaDTO porudzbinaDTO) {
+	public PorudzbinaDTO save(PorudzbinaDTO porudzbinaDTO, String name) {
 		// TODO Auto-generated method stub
 		Long id = porudzbinaDTO.getKupacDTO();
-		Kupac k = kupacRepository.findOneById(id);
+		Kupac k = kupacRepository.findOneByUsername(name);
 		Porudzbina porudzbina = new Porudzbina();
 		porudzbina.setSatnica(porudzbinaDTO.getSatnica());
 		porudzbina.setDostavljeno(porudzbinaDTO.getDostavljeno());

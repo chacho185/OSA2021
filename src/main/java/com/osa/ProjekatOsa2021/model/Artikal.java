@@ -36,6 +36,8 @@ public class Artikal {
 	@Column(name = "putanjaSlike", nullable = false)
 	private String putanjaSlike;
 	
+	private Boolean kupujem;
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "artikal")
 	private List<Stavka> stavke = new ArrayList<Stavka>();
 	
@@ -59,7 +61,7 @@ public class Artikal {
 	
 	
 	public Artikal(Long id, String naziv, String opis, Double cena, String putanjaSlike, List<Stavka> stavke,
-			Prodavac prodavac, List<AkcijaArtikal> akcijeArtikli) {
+			Prodavac prodavac, Boolean kupujem, List<AkcijaArtikal> akcijeArtikli) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
@@ -69,6 +71,7 @@ public class Artikal {
 		this.stavke = stavke;
 		this.prodavac = prodavac;
 		this.akcijeArtikli = akcijeArtikli;
+		this.kupujem = kupujem;
 	}
 
 	public Long getId() {
@@ -135,5 +138,16 @@ public class Artikal {
 		this.akcijeArtikli = akcijeArtikli;
 	}
 
+
+	public Boolean getKupujem() {
+		return kupujem;
+	}
+
+
+	public void setKupujem(Boolean kupujem) {
+		this.kupujem = kupujem;
+	}
+
+	
 	
 }
