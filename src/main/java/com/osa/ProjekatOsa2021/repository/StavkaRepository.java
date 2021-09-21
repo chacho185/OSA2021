@@ -12,5 +12,7 @@ public interface StavkaRepository extends JpaRepository<Stavka, Long> {
 	public Stavka findOneById(Long id);
 	
 	public List<Stavka> findByArtikal_idAndPorudzbina_id(Long artikalId,Long porudzbinaId);
+	
+	public List<Stavka> findByPorudzbina_id(Long porudzbinaId);
 
 }

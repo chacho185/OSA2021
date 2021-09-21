@@ -57,6 +57,7 @@ public class PorudzbinaService implements PorudzbinaServiceInterface {
 	public PorudzbinaDTO save(PorudzbinaDTO porudzbinaDTO, String name) {
 		// TODO Auto-generated method stub
 		Long id = porudzbinaDTO.getKupacDTO();
+		System.out.println(name + "------------------------------------------------------------");
 		Kupac k = kupacRepository.findOneByUsername(name);
 		Porudzbina porudzbina = new Porudzbina();
 		porudzbina.setSatnica(porudzbinaDTO.getSatnica());

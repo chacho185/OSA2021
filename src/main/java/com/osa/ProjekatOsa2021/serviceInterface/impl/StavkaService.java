@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.osa.ProjekatOsa2021.dto.ProdavacDTO;
 import com.osa.ProjekatOsa2021.dto.StavkaDTO;
+import com.osa.ProjekatOsa2021.dto.StavkeDTO;
 import com.osa.ProjekatOsa2021.model.Artikal;
 import com.osa.ProjekatOsa2021.model.Porudzbina;
 import com.osa.ProjekatOsa2021.model.Prodavac;
@@ -113,6 +114,18 @@ public class StavkaService implements StavkaServiceInterface {
 		
 		for (Stavka stavkaa : stavka) {
 			stavkaDTOs.add(new StavkaDTO(stavkaa));
+		}
+		return stavkaDTOs;
+	}
+
+	@Override
+	public List<StavkeDTO> findByPorudzbina(Long porudzbinaId) {
+		List<Stavka> stavka = stavkaRepository.findByPorudzbina_id(porudzbinaId);
+		
+		List<StavkeDTO> stavkaDTOs = new ArrayList<StavkeDTO>();
+		
+		for (Stavka stavkaa : stavka) {
+			stavkaDTOs.add(new StavkeDTO(stavkaa));
 		}
 		return stavkaDTOs;
 	}

@@ -19,6 +19,7 @@ import com.osa.ProjekatOsa2021.dto.AkcijaDTO;
 import com.osa.ProjekatOsa2021.dto.ArtikalDTO;
 import com.osa.ProjekatOsa2021.dto.ProdavacDTO;
 import com.osa.ProjekatOsa2021.dto.StavkaDTO;
+import com.osa.ProjekatOsa2021.dto.StavkeDTO;
 import com.osa.ProjekatOsa2021.model.Akcija;
 import com.osa.ProjekatOsa2021.model.Artikal;
 import com.osa.ProjekatOsa2021.model.Porudzbina;
@@ -78,12 +79,15 @@ public class StavkaController {
     }
 	
 	@GetMapping(value = "/artikal/{artikalid}/porudzbina/{porudzbinaid}")
-	
 	public ResponseEntity<List<StavkaDTO>> getArtikalAndPorudzbina(@PathVariable("artikalid") Long artikalid, @PathVariable("porudzbinaid") Long porudzbinaid ) throws Exception {
 		
 		return ResponseEntity.ok().body(stavkaServiceInterface.findByArtikalAndPorudzbina(artikalid, porudzbinaid));
 	}
 	
-	
+	@GetMapping(value = "/porudzbina/{porudzbinaid}")
+	public ResponseEntity<List<StavkeDTO>> getPorudzbina(@PathVariable("porudzbinaid") Long porudzbinaid ) throws Exception {
+		
+		return ResponseEntity.ok().body(stavkaServiceInterface.findByPorudzbina(porudzbinaid));
+	}
 
 }
